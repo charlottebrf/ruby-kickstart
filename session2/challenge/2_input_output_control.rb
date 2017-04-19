@@ -21,7 +21,7 @@
 
 
 def hi_hi_goodbye
-
+  
   puts "Enter a number"
 
   while number = gets
