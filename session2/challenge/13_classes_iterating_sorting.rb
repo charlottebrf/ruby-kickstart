@@ -14,6 +14,108 @@
 #      def ==(other)
 #        return self.date == other.date
 #      end
+require 'date'
+
+class User
+  attr_accessor :'username', :blogs
+
+  def initialize(username)
+    self.username = username
+    self.blogs    = []
+  end
+
+
+  def add_blog(date, text)
+    added_blog = Blog.new(date,self,text)
+    blogs << added_blog
+    self.blogs = blogs.sort_by { |blog| blog.date }.reverse
+    added_blog
+  end
+
+end
+
+class Blog
+  attr_accessor :date, :user, :text
+
+  def initialize(date, user, text)
+    self.date = date
+    self.user = user
+    self.text = text
+  end
+
+  def summary
+    text.split[0..9].join(' ')
+  end
+
+  def entry
+    "#{user.username} #{date}\n#{text}"
+  end
+
+  def ==(other)
+    date == other.date &&
+    user == other.user &&
+    text == other.text
+  end
+
+end
+
+
+# My original answer- not using self correctly for this test, but also super long wind def summary :(
+# class User
+#
+#   require 'date'
+#
+#   attr_accessor 'username'
+#
+#   def initialize(username)
+#     @username = username
+#   end
+#
+#
+#   def add_blog(date, text)
+#     @date = date
+#     @text = text
+#   end
+#
+#
+#   def blogs
+#     Blog.self.sort
+#   end
+#
+# end
+#
+# class Blog
+#   attr_accessor :date, :user, :text
+#
+#   def initialize(date, user, text)
+#     @date = date
+#     @user = user
+#     @text = text
+#   end
+#
+#   def summary
+#     num_lines = @text.split.count
+#     array_text = @text.split
+#     reduced_text = []
+#
+#     if num_lines < 10
+#       return @text
+#     elsif
+#     array_text[0..9].each do |word|
+#       reduced_text << word
+#       end
+#      return reduced_text
+#   end
+#
+#   end
+#
+#   def ==(other)
+#     self.date == other.date
+#     self.user == other.user
+#     self.text == other.text
+#   end
+#
+# end
 
 
 
