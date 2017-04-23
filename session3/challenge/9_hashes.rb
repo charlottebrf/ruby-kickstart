@@ -29,4 +29,52 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+
+  same = {}
+  a.each do |element|
+    same[element] ||= [nil, nil]
+    same[element] [0] = true
+  end
+
+  b.each do |element|
+    same[element] ||= [nil, nil]
+    same[element] [1] = true
+  end
+
+  final_result = same.select  { |key, value| value == [true, true] }.map { |key, value| key }
+
+  return same, final_result.sort
 end
+
+
+  # Some pseudocode below. Problem is I'm still thinking in arrays not hashes & how to access them.
+  #Return to this to try again as feel I shoyld have been able to get this
+  
+  # # first_hash = Hash.new [a]
+  # # p first_hash
+  # #struggled turning a into a hash
+  # hash1 = {"first" => 1, "second" => 2, "third" => 3}
+  # hash2 = {"first" => 1, "second" => 2, "third" => 4 }
+  #
+  #
+  #
+  # a.each { first_hash = |e| Hash[e] }
+  # p first_hash
+
+#   odds_key.each { |e| Hash[e] = (1..e).to_a.select{ |num| num.even? } }
+
+# p first_hash
+  # p first_hash
+  # p first_hash = {a}
+#given two arrays
+# This is the same as [1,2,3] & [1,2,4]
+#i need to create a new hash table from the first set
+#then check this against the elements from the second set
+#keys - elements in the arrays
+#value - two elements in array (booleans):
+#the  first index is true if the key is in a
+#the second is true if the key is in b
+# if an index is not true, it should be
+# return the hash, and the array of elements in both sets (it should be sorted)
+#   you can set up default behaviour for a hash by passing a block, see cheatsheet (essentially a lazy initialization)
+#   you can get an array of keys from a hash with the keys method
