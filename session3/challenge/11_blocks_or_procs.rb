@@ -29,6 +29,19 @@
 #   end
 # end
 
-
-def array_init
+def array_init(size=5, &block)
+  block ||= Proc.new { |i| (100 * i).to_s }
+  Array.new(size, &block)
 end
+
+# #My wrong solution: Didn't join it all together- need to better understand how the Proc is being used here
+#if there is a block then need to understand how to use the bloc part
+#   def array_init(array_size=5, &array_block)
+#
+#   if block_given? == true
+#     array_block.map = { |element| [element] += [array_size] }
+#   elsif
+#     Array.new.each.map = {|index| (100 * index).to_s }
+#   end
+#
+# end
