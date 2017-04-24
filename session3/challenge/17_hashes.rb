@@ -7,3 +7,13 @@
 #
 # print_list_in_reverse head   # >> "1\n2\n"
 
+def print_list_in_reverse(list)
+  return unless list
+  print_list_in_reverse list[:next]
+  puts list[:data]
+end
+
+#unless there is a list then return
+#different to the previous one- take the next linked list of the list
+#assign this to the variable print_list_in_reverse
+#output the list[:data] - the data from the list which gets printed to the screen
