@@ -24,8 +24,41 @@
 # USER:     BYE
 
 def deaf_grandma
-
+  while line = gets
+    line.chomp!
+    break if line == "BYE"
+    if line == line.upcase && line != ""
+      puts "NO, NOT SINCE 1938!"
+    else
+      puts "HUH?! SPEAK UP, SONNY!"
+    end
+  end
 end
+
+
+#work out how to do this so it works regardless of what's coming & out
+#previous version had a random year included 
+#One working version which was working with first off putting a greeting
+# def deaf_grandma
+#   puts greeting
+#   #greeting = gets.chomp
+#   if greeting == greeting.capitalize
+#     puts "NO, NOT SINCE " + rand(101).to_s + " !"
+#     while greeting != greeting.downcase
+#       #puts "NO, NOT SINCE " + rand(1930-1950).to_s + " ."
+#       greeting.gets.chomp
+#     end
+#   elsif greeting == greeting.downcase
+#     puts "HUH?! SPEAK UP, SONNY!"
+#     while greeting != greeting.capitalize
+#       greeting.gets.chomp
+#     end
+#   else greeting == "BYE"
+#     puts "BYE!"
+#   end
+# end
+
+# greeting = " "
 
 
 
