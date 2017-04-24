@@ -38,3 +38,32 @@
 # middle head                        # => 3
 # head = {:data => 6, :next => head}
 # middle head                        # => 3
+
+def list_size(list)
+  return 0 unless list
+  #if no list has been passed then return 0
+  1 + list_size(list[:next])
+  #is this like self. ?
+  #plus 1 to the list size which takes the list then has a symbol which is the next one
+end
+
+def middle(list, distance=list_size(list)/2)
+  return list[:data] if distance == 0
+  middle list[:next], if (distance -1)
+end
+
+#get the middle list by- passing the list & the distance- list_size of list /2
+#if the distance == 0 then return the list with the data
+#if the distance is -1 then middle list (again the method invoking itself here?)
+#then gives the next list
+#
+
+
+# def middle(list)
+#   linked_hash.each { || }
+#
+# end
+
+
+#work out how to access a hash
+#iterate over each element of the hash to find half of the linked list
