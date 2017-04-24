@@ -52,5 +52,17 @@
 #   end
 # end       # => ["a", "m", "r", 1, 3, 4, 9, 2.5, 9.0, 25.8]
 
-def your_sort
+def your_sort( array, &orderer)
+  #array & block &orderer as parameters
+  orderer ||= Proc.new { |a, b| a <=> b}
+  #A proc contains the block within its environment
+  array.each_index do |index1|
+    array.each_index do |index2|
+      #take index1 & index2 for the array- a double iteration going on here
+      order = orderer.call(array[index1], array[index2])
+#call the block orderer & then iterate over the index1 & index2 which was given in the loops above
+      array[index1], array[index2] = array[index2], array[index1] if order < 0
+      #if the order is less than 0 then reassign these results to the array & its indexes
+    end
+  end
 end
